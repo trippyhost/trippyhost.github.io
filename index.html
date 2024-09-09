@@ -44,16 +44,25 @@
 
                         const imageContainer = document.getElementById('imageContainer');
                         const img = document.createElement('img');
-                        img.src = downloadURL; // Use the download URL
+                        img.src = downloadURL;
                         img.style.maxWidth = '100%';
-                        imageContainer.innerHTML = ''; // Clear previous images
-                        imageContainer.appendChild(img);
+                        img.style.maxHeight = '400px'; // Limit height to 400px
 
-                        // Create shareable link
+                        // Adjust image size if larger than 800x800
+                        img.onload = () => {
+                            if (img.naturalWidth > 800 || img.naturalHeight > 800) {
+                                img.style.width = '100%';
+                                img.style.height = 'auto';
+                            }
+                        };
+
                         const link = document.createElement('a');
                         link.href = downloadURL;
                         link.textContent = "Shareable Link";
                         link.target = "_blank";
+
+                        imageContainer.innerHTML = ''; // Clear previous images
+                        imageContainer.appendChild(img);
                         imageContainer.appendChild(link);
                     } catch (error) {
                         console.error("Error uploading file:", error);
@@ -64,11 +73,13 @@
     </script>
 </head>
 <body>
-    <h1>Image Hosting Platform</h1>
-    <form id="uploadForm">
-        <input type="file" id="imageInput" accept="image/*">
-        <button type="submit">Upload</button>
-    </form>
-    <div id="imageContainer"></div>
+    <div class="container">
+        <h1>Image Hosting Platform</h1>
+        <form id="uploadForm">
+            <input type="file" id="imageInput" accept="image/*">
+            <button type="submit">Upload</button>
+        </form>
+        <div id="imageContainer"></div>
+    </div>
 </body>
 </html>
