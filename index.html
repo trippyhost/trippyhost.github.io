@@ -10,7 +10,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
-        
+
         // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyCncxD3GHU02aNS23ANQ58wGs4mmxa22Ns",
@@ -41,10 +41,10 @@
                         const storageRef = ref(storage, 'images/' + file.name);
                         const snapshot = await uploadBytes(storageRef, file);
                         const downloadURL = await getDownloadURL(snapshot.ref);
-                        
+
                         const imageContainer = document.getElementById('imageContainer');
                         const img = document.createElement('img');
-                        img.src = downloadURL;
+                        img.src = downloadURL; // Use the download URL
                         img.style.maxWidth = '100%';
                         imageContainer.innerHTML = ''; // Clear previous images
                         imageContainer.appendChild(img);
