@@ -10,7 +10,15 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
             const imageContainer = document.getElementById('imageContainer');
             const img = document.createElement('img');
             img.src = e.target.result;
+            imageContainer.innerHTML = ''; // Clear previous images
             imageContainer.appendChild(img);
+
+            // Create shareable link
+            const link = document.createElement('a');
+            link.href = e.target.result;
+            link.textContent = "Shareable Link";
+            link.target = "_blank";
+            imageContainer.appendChild(link);
         };
         reader.readAsDataURL(file);
     }
