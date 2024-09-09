@@ -45,8 +45,7 @@
                         const imageContainer = document.getElementById('imageContainer');
                         const img = document.createElement('img');
                         img.src = downloadURL;
-                        img.style.maxWidth = '100%';
-                        img.style.maxHeight = '400px'; // Limit height to 400px
+                        img.alt = "Uploaded Image";
 
                         // Adjust image size if larger than 800x800
                         img.onload = () => {
