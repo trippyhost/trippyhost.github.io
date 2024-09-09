@@ -9,3 +9,7 @@ body {
     height: auto;
     margin: 10px 0;
 }
+
+#uploadForm {
+    margin-bottom: 20px;
+}
